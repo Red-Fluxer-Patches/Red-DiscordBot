@@ -217,7 +217,9 @@ class PlayerUtilities(MixinMeta, metaclass=CompositeMetaClass):
             return
         if not await self.config.guild_from_id(guild_id).auto_deafen():
             return
-        await player.guild.change_voice_state(channel=player.channel, self_deaf=True)
+        # Fluxer requires connection_id to be specified in every voice state change
+        # in order to avoid resetting it; for now let's just not change vc state here
+        # await player.guild.change_voice_state(channel=player.channel, self_deaf=True)
 
     async def _get_spotify_tracks(
         self, ctx: commands.Context, query: Query, forced: bool = False

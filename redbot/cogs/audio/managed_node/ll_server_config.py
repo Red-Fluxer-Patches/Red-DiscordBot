@@ -132,6 +132,12 @@ def generate_server_config(config_data: Dict[str, Any]) -> Dict[str, Any]:
         }
         plugins.append(yt_plugin)
 
+    # for development purposes
+    data["logging"]["level"]["lavalink"] = "DEBUG"
+    data["logging"]["level"]["lavalink.server.io.SocketContext"] = "TRACE"
+    data["logging"]["level"]["com.sedmelluq.discord.lavaplayer.tools.ExceptionTools"] = "DEBUG"
+    data["logging"]["level"]["moe.kyokobot.koe"] = "DEBUG"
+
     return data
 
 
