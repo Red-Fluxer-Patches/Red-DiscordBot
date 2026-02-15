@@ -110,7 +110,7 @@ LAVALINK_BUILD_TIME_LINE: Final[Pattern] = re.compile(
 
 class ServerManager:
     LAVALINK_DOWNLOAD_URL: Final[str] = (
-        "https://github.com/Cog-Creators/Lavalink-Jars/releases/download/"
+        "https://github.com/Red-Fluxer-Patches/Lavalink-Jars/releases/download/"
         f"{version_pins.JAR_VERSION}/"
         "Lavalink.jar"
     )
