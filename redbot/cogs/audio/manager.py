@@ -494,6 +494,8 @@ class ServerManager:
         return self._up_to_date
 
     async def maybe_download_jar(self):
+        self.downloaded.set()
+        return
         if not self.lavalink_jar_file.exists():
             log.info("Triggering first-time download of Lavalink...")
             await self._download_jar()
