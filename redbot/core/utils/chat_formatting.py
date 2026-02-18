@@ -229,7 +229,11 @@ def box(text: str, lang: str = "") -> str:
         The marked up text.
 
     """
-    return f"```{lang}\n{text}\n```"
+    # Fluxer is less forgiving about whitespace after closing mark.
+    # For now, let's just always add a newline at the end to make
+    # more stuff work out of the box. Later, this will hopefully get reverted.
+    # Ref: https://github.com/fluxerapp/fluxer/issues/224
+    return f"```{lang}\n{text}\n```\n"
 
 
 def inline(text: str) -> str:
@@ -348,7 +352,9 @@ class pagify(Iterator[str]):
         self._delims = delims
         self._priority = priority
         self._escape_mass_mentions = escape_mass_mentions
-        self._shorten_by = shorten_by
+        # Since this is usually done for code blocks and box() adds 1 newline character
+        # at the end now, let's just 1 here as well. Hacky? Yes. Practical? Also yes.
+        self._shorten_by = shorten_by + 1
         self._page_length = page_length - shorten_by
 
         self._start = 0
