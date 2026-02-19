@@ -1,0 +1,48 @@
+name: Bump d.py
+on:
+  workflow_dispatch:
+    inputs:
+      dpy_commit:
+        description: d.py fork commit to use (leave empty to use latest commit on `fluxer` branch)
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  bump_dpy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Red
+        uses: actions/checkout@v6
+        with:
+          path: Red-DiscordBot
+
+      - name: Checkout d.py
+        uses: actions/checkout@v6
+        with:
+          path: discord.py
+          repository: ${{ github.repository_owner }}/discord.py
+          ref: fluxer
+
+      - name: Configure Git user
+        working-directory: Red-DiscordBot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Update d.py commit in Red repo
+        env:
+          DPY_COMMIT: ${{ inputs.dpy_commit }}
+        run: |
+          DPY_COMMIT=$(git -C discord.py rev-parse --verify "${DPY_COMMIT:-HEAD}")
+          sed -Ei "s/discord\.py@[0-9a-f]+/discord.py@$DPY_COMMIT/" Red-DiscordBot/requirements/base.txt
+
+          git -C Red-DiscordBot add requirements/base.txt
+          git -C Red-DiscordBot commit -m "Bump d.py to $DPY_COMMIT"
+
+      - name: Push changes
+        working-directory: Red-DiscordBot
+        run: |
+          git push
