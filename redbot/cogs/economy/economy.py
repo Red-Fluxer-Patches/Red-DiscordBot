@@ -29,11 +29,11 @@ MOCK_MEMBER = namedtuple("Member", "id guild")
 class SMReel(Enum):
     cherries = "\N{CHERRIES}"
     cookie = "\N{COOKIE}"
-    two = "\N{DIGIT TWO}" + NUM_ENC
+    two = "\N{DIGIT TWO}" + VARIATION_SELECTOR + NUM_ENC
     flc = "\N{FOUR LEAF CLOVER}"
     cyclone = "\N{CYCLONE}"
     sunflower = "\N{SUNFLOWER}"
-    six = "\N{DIGIT SIX}" + NUM_ENC
+    six = "\N{DIGIT SIX}" + VARIATION_SELECTOR + NUM_ENC
     mushroom = "\N{MUSHROOM}"
     heart = "\N{HEAVY BLACK HEART}" + VARIATION_SELECTOR
     snowflake = "\N{SNOWFLAKE}" + VARIATION_SELECTOR
@@ -589,12 +589,10 @@ class Economy(commands.Cog):
             (reels[0][2], reels[1][2], reels[2][2]),
         )
 
-        slot = "~~\n~~"  # Mobile friendly
+        slot = ""
+        sign = "> "
         for i, row in enumerate(rows):  # Let's build the slot to show
-            sign = "  "
-            if i == 1:
-                sign = ">"
-            slot += "{}{} {} {}\n".format(
+            slot += "{}{} {} {}\n ".format(
                 sign, *[c.value for c in row]  # pylint: disable=no-member
             )
 
