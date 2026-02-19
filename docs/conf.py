@@ -70,7 +70,9 @@ author = "Cog Creators"
 # built documents.
 #
 from redbot.core import __version__
-from discord import __version__ as dpy_version, version_info as dpy_version_info
+
+# version is technically 2.6.4a but the fork of Fluxer is based on 2.6.3, let's just hard-code this
+dpy_version = "2.6.3"
 
 # The short X.Y version.
 version = __version__
@@ -231,12 +233,8 @@ linkcheck_retries = 3
 
 # -- Options for extensions -----------------------------------------------
 
-if dpy_version_info.releaselevel == "final":
-    # final release - versioned docs should be available
-    dpy_docs_url = f"https://discordpy.readthedocs.io/en/v{dpy_version}/"
-else:
-    # alpha release - `latest` version of docs should be used
-    dpy_docs_url = "https://discordpy.readthedocs.io/en/latest/"
+# dpy_version is hard-coded, we don't have to worry about final vs alpha release level
+dpy_docs_url = f"https://discordpy.readthedocs.io/en/v{dpy_version}/"
 
 # Intersphinx
 intersphinx_mapping = {
