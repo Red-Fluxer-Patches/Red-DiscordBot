@@ -18,7 +18,7 @@ brotli==1.1.0
     # via -r base.in
 click==8.1.8
     # via -r base.in
-discord.py @ https://github.com/Red-Fluxer-Patches/discord.py/archive/0c834281740008ca5f5ca3c335d22fd42468d35e.tar.gz
+discord.py @ https://github.com/Red-Fluxer-Patches/discord.py/archive/175d99576a54b478476aa89fc6961458f7bee369.tar.gz
     # via
     #   -r base.in
     #   red-lavalink
