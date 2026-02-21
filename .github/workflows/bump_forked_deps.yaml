@@ -1,4 +1,4 @@
-name: Bump d.py
+name: Bump forked deps
 on:
   workflow_dispatch:
     inputs:
@@ -6,12 +6,16 @@ on:
         description: d.py fork commit to use (leave empty to use latest commit on `fluxer` branch)
         required: false
         default: ''
+      rll_commit:
+        description: RLL fork commit to use (leave empty to use latest commit on `fluxer` branch)
+        required: false
+        default: ''
 
 permissions:
   contents: write
 
 jobs:
-  bump_dpy:
+  bump_forked_deps:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Red
@@ -24,6 +28,13 @@ jobs:
         with:
           path: discord.py
           repository: ${{ github.repository_owner }}/discord.py
+          ref: fluxer
+
+      - name: Checkout RLL
+        uses: actions/checkout@v6
+        with:
+          path: Red-Lavalink
+          repository: ${{ github.repository_owner }}/Red-Lavalink
           ref: fluxer
 
       - name: Configure Git user
@@ -40,7 +51,21 @@ jobs:
           sed -Ei "s#discord\.py/archive/[0-9a-f]+#discord.py/archive/${DPY_COMMIT}#" Red-DiscordBot/requirements/base.txt
 
           git -C Red-DiscordBot add requirements/base.txt
-          git -C Red-DiscordBot commit -m "Bump d.py to $DPY_COMMIT"
+          if ! git diff --exit-code; then
+            git -C Red-DiscordBot commit -m "Bump d.py to $DPY_COMMIT"
+          fi
+
+      - name: Update RLL commit in Red repo
+        env:
+          RLL_COMMIT: ${{ inputs.rll_commit }}
+        run: |
+          RLL_COMMIT=$(git -C Red-Lavalink rev-parse --verify "${RLL_COMMIT:-HEAD}")
+          sed -Ei "s#Red-Lavalink/archive/[0-9a-f]+#Red-Lavalink/archive/${RLL_COMMIT}#" Red-DiscordBot/requirements/base.txt
+
+          git -C Red-DiscordBot add requirements/base.txt
+          if ! git diff --exit-code; then
+            git -C Red-DiscordBot commit -m "Bump RLL to $RLL_COMMIT"
+          fi
 
       - name: Push changes
         working-directory: Red-DiscordBot
