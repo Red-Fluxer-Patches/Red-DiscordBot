@@ -51,7 +51,7 @@ jobs:
           sed -Ei "s#discord\.py/archive/[0-9a-f]+#discord.py/archive/${DPY_COMMIT}#" Red-DiscordBot/requirements/base.txt
 
           git -C Red-DiscordBot add requirements/base.txt
-          if ! git -C Red-DiscordBot diff --exit-code; then
+          if ! git -C Red-DiscordBot diff --staged --exit-code; then
             git -C Red-DiscordBot commit -m "Bump d.py to $DPY_COMMIT"
           fi
 
@@ -63,7 +63,7 @@ jobs:
           sed -Ei "s#Red-Lavalink/archive/[0-9a-f]+#Red-Lavalink/archive/${RLL_COMMIT}#" Red-DiscordBot/requirements/base.txt
 
           git -C Red-DiscordBot add requirements/base.txt
-          if ! git -C Red-DiscordBot diff --exit-code; then
+          if ! git -C Red-DiscordBot diff --staged --exit-code; then
             git -C Red-DiscordBot commit -m "Bump RLL to $RLL_COMMIT"
           fi
 
