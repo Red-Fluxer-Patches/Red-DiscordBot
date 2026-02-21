@@ -60,7 +60,7 @@ red-commons==1.0.0
     # via
     #   -r base.in
     #   red-lavalink
-red-lavalink @ https://github.com/Red-Fluxer-Patches/Red-Lavalink/archive/a3b6e1cdf196a682b1bc83795c265b17e3bd1e6f.tar.gz
+red-lavalink @ https://github.com/Red-Fluxer-Patches/Red-Lavalink/archive/d27911f9572fac08356146abe9f7a286d2498c20.tar.gz
     # via -r base.in
 rich==14.1.0
     # via -r base.in
