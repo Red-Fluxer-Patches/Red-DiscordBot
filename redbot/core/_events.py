@@ -76,7 +76,7 @@ def get_outdated_red_messages(pypi_version: str, py_version_req: str) -> Tuple[s
             "requires `{req_py}`; you cannot simply run the update command.\n\n"
             "You will need to follow the update instructions in our docs above, "
             "if you still need help updating after following the docs go to our "
-            "#support channel in <https://discord.gg/red>"
+            "support channel in <https://invite.fluxer.red>"
         ).format(py_version=current_python, req_py=py_version_req)
         outdated_red_message += extra_update
         return outdated_red_message, rich_outdated_message

@@ -28,7 +28,7 @@ dynamic = ["version", "requires-python", "dependencies", "optional-dependencies"
 
 [project.urls]
 "Homepage" = "https://github.com/Cog-Creators/Red-DiscordBot"
-"Discord Server" = "https://discord.gg/red"
+"Fluxer Community" = "https://invite.fluxer.red"
 "Documentation" = "https://docs.discord.red"
 "Donate on Patreon" = "https://www.patreon.com/Red_Devs"
 "Issue Tracker" = "https://github.com/Cog-Creators/Red-DiscordBot/issues"

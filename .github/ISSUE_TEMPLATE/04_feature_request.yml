@@ -6,7 +6,7 @@ body:
   attributes:
     value: |
       Thank you for taking the time to fill out an issue, this template is meant for any feature suggestions.
-      If you require help with installing Red we ask that you join our [Discord server](https://discord.gg/red)
+      If you require help with installing Red we ask that you join our [Fluxer community](https://invite.fluxer.red)
 - type: dropdown
   id: feature-name
   attributes:

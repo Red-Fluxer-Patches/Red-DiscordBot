@@ -330,7 +330,7 @@ If you're reading this, it means that you've made it to the end of this guide.
 Congratulations! You are now prepared with the basics of slash commands for Red.
 However there is a lot we didn't touch on in this guide.
 Below this paragraph you'll find a list of resources that you can use to learn more about slash commands.
-As always, if you have any questions, feel free to ask in the `Red support server <https://discord.gg/red>`__.
+As always, if you have any questions, feel free to ask in the `Red support server <https://invite.fluxer.red>`__.
 
 For more information on `Application Commands <https://discord.com/developers/docs/interactions/application-commands>`__ as a whole, please refer to the official Discord documentation.
 Discord.py also offers documentation regarding everything discussed on this page.

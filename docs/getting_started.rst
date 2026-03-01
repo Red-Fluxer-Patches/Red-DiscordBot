@@ -162,7 +162,7 @@ customize Red how you want!
 Community cogs
 ~~~~~~~~~~~~~~
 
-There's an entire `community <https://discord.gg/red>`_ that contributes
+There's an entire `community <https://invite.fluxer.red>`_ that contributes
 to Red. Those contributors make additional cogs for you to use. You can
 download them using the downloader cog.
 

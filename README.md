@@ -9,9 +9,6 @@
 <h4 align="center">Music, Moderation, Trivia, Stream Alerts and Fully Modular.</h4>
 
 <p align="center">
-  <a href="https://discord.gg/red">
-    <img src="https://discordapp.com/api/guilds/133049272517001216/widget.png?style=shield" alt="Discord Server">
-  </a>
   <a href="https://pypi.org/project/Red-DiscordBot/">
      <img alt="PyPI" src="https://img.shields.io/pypi/v/Red-Discordbot">
   </a>
@@ -91,7 +88,7 @@ community of cog repositories.**
 - [Most major linux distributions](https://docs.discord.red/en/stable/install_guides/index.html)
 
 If after reading the guide you are still experiencing issues, feel free to join the
-[Official Discord Server](https://discord.gg/red) and ask in the **#support** channel for help.
+[Official Fluxer Community](https://invite.fluxer.red) and ask in the **#support** channel for help.
 
 # Plugins
 
@@ -118,7 +115,7 @@ content (cogs/plugins) for everyone to enjoy. New features are constantly added.
 consult our [guide](https://docs.discord.red/en/stable/guide_cog_creation.html) on
 building your own cogs!
 
-Join us on our [Official Discord Server](https://discord.gg/red)!
+Join us on our [Official Fluxer Community](https://invite.fluxer.red)!
 
 # License
 

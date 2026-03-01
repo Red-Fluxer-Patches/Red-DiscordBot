@@ -362,7 +362,7 @@ Setting up Multiple Red Instances with Audio on the Same Host
 
     This section provides instructions for setting up an unmanaged Lavalink node that is on the same machine 
     as the Red bot(s) that need to connect to it. This configuration is supported by the Red community, so 
-    if you need additional help, feel free to join the `Red Support Server <https://discord.gg/red>`__ and ask in the #support channel.
+    if you need additional help, feel free to join the `Red Support Community <https://invite.fluxer.red>`__ and ask in the support channel.
 
     If you are looking to set up a remote, unmanaged Lavalink node on a different vps or host than the Red 
     bot(s) that will connect to it, we provide basic instructions in this guide :ref:`here<remote-lavalink>`, but that 
@@ -520,7 +520,7 @@ It is assumed your bot currently uses a managed Lavalink server (Red's default).
 
     This guide is provided for advice on this topic and this is generally not a supported configuration for 
     Red's usage of Lavalink, as it involves system administration and network configuration. However, if you
-    run into any issues, feel free to ask for help in the `Red Support Server <https://discord.gg/red>`__, in the #general channel.
+    run into any issues, feel free to ask for help in the `Red Support Community <https://invite.fluxer.red>`__, in the #general channel.
 
 .. warning::
 
