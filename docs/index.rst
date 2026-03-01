@@ -5,8 +5,8 @@
 
 .. _main:
 
-Welcome to documentation of Fluxer fork of Red - Discord Bot's!
-===============================================================
+Welcome to documentation of Fluxer fork of Red - Discord Bot!
+=============================================================
 
 Whenever you encounter mention of Discord, assume we actually mean Fluxer ;)
 
