@@ -18,6 +18,6 @@ python.
 
 First, choose a directory where you would like to create your virtual environment. It's a good idea
 to keep it in a location which is easy to type out the path to. From now, we'll call it
-``redenv`` and it will be located in your home directory.
+``redfluxerenv`` and it will be located in your home directory.
 
 Create your virtual environment with the following command:

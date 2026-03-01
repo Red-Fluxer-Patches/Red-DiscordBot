@@ -87,7 +87,7 @@ straightforward.
 
 First, choose a directory where you would like to create your virtual environment. It's a good idea
 to keep it in a location which is easy to type out the path to. From now, we'll call it
-``redenv`` and it will be located in your home directory.
+``redfluxerenv`` and it will be located in your home directory.
 
 Start with opening a command prompt (open Start, search for "command prompt", then click it).
 
@@ -104,13 +104,13 @@ Then create your virtual environment with the following command
 
 .. prompt:: batch
 
-    py -3.11 -m venv "%userprofile%\redenv"
+    py -3.11 -m venv "%userprofile%\redfluxerenv"
 
 And activate it with the following command
 
 .. prompt:: batch
 
-    "%userprofile%\redenv\Scripts\activate.bat"
+    "%userprofile%\redfluxerenv\Scripts\activate.bat"
 
 .. important::
 
@@ -130,7 +130,7 @@ Installing Red
 Run the following set of commands to install Red:
 
 .. prompt:: batch
-    :prompts: (redenv) C:\\>
+    :prompts: (redfluxerenv) C:\\>
 
     python -m pip install -U pip wheel
     python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
@@ -142,7 +142,7 @@ Setting Up and Running Red
 After installation, set up your instance with the following command:
 
 .. prompt:: batch
-    :prompts: (redenv) C:\\>
+    :prompts: (redfluxerenv) C:\\>
 
     redbot-setup
 
@@ -153,7 +153,7 @@ running the bot).
 Once done setting up the instance, run the following command to run Red:
 
 .. prompt:: batch
-    :prompts: (redenv) C:\\>
+    :prompts: (redfluxerenv) C:\\>
 
     redbot <your instance name>
 

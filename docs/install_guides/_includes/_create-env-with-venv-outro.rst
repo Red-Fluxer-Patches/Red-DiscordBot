@@ -2,7 +2,7 @@ And activate it with the following command:
 
 .. prompt:: bash
 
-    source ~/redenv/bin/activate
+    source ~/redfluxerenv/bin/activate
 
 .. important::
 

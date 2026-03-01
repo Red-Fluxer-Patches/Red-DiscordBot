@@ -21,12 +21,12 @@ First, your Linux :code:`username` can be fetched with the following command:
 Next, your python :code:`path` can be fetched with the following commands:
 
 .. prompt:: bash
-    :prompts: $,(redenv) $
+    :prompts: $,(redfluxerenv) $
     :modifiers: auto
 
     # If redbot is installed in a venv
-    $ source ~/redenv/bin/activate
-    (redenv) $ /usr/bin/which python
+    $ source ~/redfluxerenv/bin/activate
+    (redfluxerenv) $ /usr/bin/which python
 
 Then create the new service file:
 

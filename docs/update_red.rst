@@ -38,11 +38,11 @@ If you have Red 3.5.0 or newer, you can upgrade by following these steps:
 
     .. prompt:: batch
 
-        "%userprofile%\redenv\Scripts\activate.bat"
+        "%userprofile%\redfluxerenv\Scripts\activate.bat"
 #. Update Red with this command:
 
     .. prompt:: batch
-        :prompts: (redenv) C:\\>
+        :prompts: (redfluxerenv) C:\\>
 
         python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
 
@@ -61,12 +61,12 @@ If you have Red 3.5.0 or newer, you can upgrade by following these steps:
 
     .. prompt:: bash
 
-        source ~/redenv/bin/activate
+        source ~/redfluxerenv/bin/activate
 
 #. Update Red with this command:
 
     .. prompt:: bash
-        :prompts: (redenv) $
+        :prompts: (redfluxerenv) $
 
         python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
 
@@ -86,11 +86,11 @@ If you have a Red version between 3.2.0 and 3.4.19, you can upgrade by following
 
     .. prompt:: batch
 
-        "%userprofile%\redenv\Scripts\activate.bat"
+        "%userprofile%\redfluxerenv\Scripts\activate.bat"
 #. Update Red with this command:
 
     .. prompt:: batch
-        :prompts: (redenv) C:\\>
+        :prompts: (redfluxerenv) C:\\>
 
         python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
 
@@ -100,7 +100,7 @@ If you have a Red version between 3.2.0 and 3.4.19, you can upgrade by following
 
         .. prompt:: batch
 
-            :prompts: (redenv) C:\\>
+            :prompts: (redfluxerenv) C:\\>
 
             redbot <your instance name> --no-cogs --load-cogs downloader
 
@@ -122,12 +122,12 @@ If you have a Red version between 3.2.0 and 3.4.19, you can upgrade by following
 
     .. prompt:: bash
 
-        source ~/redenv/bin/activate
+        source ~/redfluxerenv/bin/activate
 
 #. Update Red with this command:
 
     .. prompt:: bash
-        :prompts: (redenv) $
+        :prompts: (redfluxerenv) $
 
         python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
 
@@ -136,7 +136,7 @@ If you have a Red version between 3.2.0 and 3.4.19, you can upgrade by following
     #. Start your bot with ``--no-cogs --load-cogs downloader`` flags, for example:
 
         .. prompt:: bash
-            :prompts: (redenv) $
+            :prompts: (redfluxerenv) $
 
             redbot <your instance name> --no-cogs --load-cogs downloader
 
@@ -165,7 +165,7 @@ Go to the `install_guides/index` guide and follow every step to ensure you have 
        you will need to run the following commands to convert:
 
          .. prompt:: bash
-           :prompts: (redenv) $
+           :prompts: (redfluxerenv) $
 
            python -m pip install dnspython~=1.16.0 motor~=2.0.0 pymongo~=3.8.0
            redbot-setup convert [instancename] json
@@ -184,7 +184,7 @@ Red 3.0.2 and older
        using following command:
 
          .. prompt:: bash
-           :prompts: (redenv) $
+           :prompts: (redfluxerenv) $
 
            redbot-setup --edit
 

@@ -18,7 +18,7 @@ Open that document in Notepad, and paste the following text in it:
     
     @ECHO OFF
     :RED
-    CALL "%userprofile%\redenv\Scripts\activate.bat"
+    CALL "%userprofile%\redfluxerenv\Scripts\activate.bat"
     python -O -m redbot <your instance name>
 
     IF %ERRORLEVEL% == 1 GOTO RESTART_RED
@@ -30,7 +30,7 @@ Open that document in Notepad, and paste the following text in it:
     GOTO RED
 
 Replace ``<your instance name>`` with the instance name of your bot.
-If you created your VENV at a location other than the recommended one, replace ``%userprofile%\redenv\Scripts\activate.bat`` with the path to your VENV.
+If you created your VENV at a location other than the recommended one, replace ``%userprofile%\redfluxerenv\Scripts\activate.bat`` with the path to your VENV.
 
 Click "File", "Save as". Change the dropdown "Save as type" to "All Files (*.*)". Set the filename to ``start_redbot.bat``, and click save.
 

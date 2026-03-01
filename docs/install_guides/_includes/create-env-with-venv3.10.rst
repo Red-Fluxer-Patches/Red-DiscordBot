@@ -2,6 +2,6 @@
 
 .. prompt:: bash
 
-    python3.10 -m venv ~/redenv
+    python3.10 -m venv ~/redfluxerenv
 
 .. include:: _includes/_create-env-with-venv-outro.rst

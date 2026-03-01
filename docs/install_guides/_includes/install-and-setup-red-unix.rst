@@ -5,7 +5,7 @@ Installing Red
 Run the following to install Red:
 
 .. prompt:: bash
-    :prompts: (redenv) $
+    :prompts: (redfluxerenv) $
 
     python -m pip install -U pip wheel
     python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
@@ -18,7 +18,7 @@ Setting Up and Running Red
 After installation, set up your instance with the following command:
 
 .. prompt:: bash
-    :prompts: (redenv) $
+    :prompts: (redfluxerenv) $
 
     redbot-setup
 
@@ -29,7 +29,7 @@ running the bot).
 Once done setting up the instance, run the following command to run Red:
 
 .. prompt:: bash
-    :prompts: (redenv) $
+    :prompts: (redfluxerenv) $
 
     redbot <your instance name>
 
