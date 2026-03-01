@@ -1,3 +1,5 @@
+:orphan:
+
 .. Slash Commands and Interactions
 
 .. role:: python(code)

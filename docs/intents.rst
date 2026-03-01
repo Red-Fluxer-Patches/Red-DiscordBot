@@ -1,3 +1,5 @@
+:orphan:
+
 .. _intents:
 .. |br| raw:: html
 
@@ -89,7 +91,7 @@ experience errors due to Red expecting information provided by the intent to be 
 Discord currently considers 3 intents to be
 `privileged <https://support-dev.discord.com/hc/en-us/articles/6205754771351-How-do-I-get-Privileged-Intents-for-my-bot>`_,
 and requires large bots to additionally apply for access to these intents. **If you have a small
-bot**, you can simply follow :ref:`these instructions <enabling-privileged-intents>` to enable them.
+bot**, you can simply follow `these instructions <bot_application_guide>` to enable them.
 
 A breakdown of how privileged intents are used in Red is provided below.
 

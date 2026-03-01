@@ -33,7 +33,6 @@ Welcome to Red - Discord Bot's documentation!
     :caption: User guides:
 
     getting_started
-    intents
     cog_guides/admin
     cog_guides/alias
     cog_guides/audio
@@ -63,7 +62,6 @@ Welcome to Red - Discord Bot's documentation!
 
     guide_migration
     guide_cog_creation
-    guide_slash_and_interactions
     guide_publish_cogs
     guide_cog_creators
     framework_apikeys

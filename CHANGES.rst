@@ -2632,7 +2632,7 @@ Read before updating
 --------------------
 
 #. This release fixes a security issue in Mod cog. See `Security changelog below <important-341-2>` for more information.
-#. This Red update bumps discord.py to version 1.5.1, which explicitly requests Discord intents. Red requires all Privileged Intents to be enabled. More information can be found at :ref:`enabling-privileged-intents`.
+#. This Red update bumps discord.py to version 1.5.1, which explicitly requests Discord intents. Red requires all Privileged Intents to be enabled. More information can be found at `bot_application_guide`.
 #. Mutes functionality has been moved from the Mod cog to a new separate cog (Mutes) featuring timed and role-based mutes. If you were using it (or want to start now), you can load the new cog with ``[p]load mutes``. You can see the full `Removals changelog below <important-341-1>`.
 #. Information for Audio users that are using an external Lavalink instance (if you don't know what that is, you should skip this point):
 
