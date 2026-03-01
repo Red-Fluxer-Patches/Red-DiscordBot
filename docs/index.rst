@@ -5,8 +5,10 @@
 
 .. _main:
 
-Welcome to Red - Discord Bot's documentation!
-=============================================
+Welcome to documentation of Fluxer fork of Red - Discord Bot's!
+===============================================================
+
+Whenever you encounter mention of Discord, assume we actually mean Fluxer ;)
 
 .. toctree::
     :maxdepth: 1

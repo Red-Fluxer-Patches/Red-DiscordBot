@@ -61,7 +61,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "Red - Discord Bot"
+project = "Fluxer fork of Red - Discord Bot"
 copyright = f"2018-{time.strftime('%Y')}, Cog Creators"
 author = "Cog Creators"
 
