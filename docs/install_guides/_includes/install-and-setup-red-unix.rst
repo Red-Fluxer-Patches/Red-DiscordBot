@@ -2,23 +2,13 @@
 Installing Red
 --------------
 
-Choose one of the following commands to install Red.
-
-To install without additional config backend support:
+Run the following to install Red:
 
 .. prompt:: bash
     :prompts: (redenv) $
 
     python -m pip install -U pip wheel
-    python -m pip install -U Red-DiscordBot
-
-Or, to install with PostgreSQL support:
-
-.. prompt:: bash
-    :prompts: (redenv) $
-
-    python -m pip install -U pip wheel
-    python -m pip install -U "Red-DiscordBot[postgres]"
+    python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
 
 
 --------------------------

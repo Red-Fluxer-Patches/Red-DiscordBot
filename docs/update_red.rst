@@ -44,11 +44,8 @@ If you have Red 3.5.0 or newer, you can upgrade by following these steps:
     .. prompt:: batch
         :prompts: (redenv) C:\\>
 
-        python -m pip install -U Red-DiscordBot
+        python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
 
-    .. attention::
-
-        If you're using PostgreSQL data backend, replace ``Red-DiscordBot`` in the second command with ``Red-DiscordBot[postgres]``
 #. Start your bot.
 #. If you have any 3rd-party cogs installed, we highly recommend you update them with this command in Discord: ``[p]cog update`` (``[p]`` is considered as your prefix)
 
@@ -71,11 +68,8 @@ If you have Red 3.5.0 or newer, you can upgrade by following these steps:
     .. prompt:: bash
         :prompts: (redenv) $
 
-        python -m pip install -U Red-DiscordBot
+        python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
 
-    .. attention::
-
-        If you're using PostgreSQL data backend, replace ``Red-DiscordBot`` in the second command with ``Red-DiscordBot[postgres]``
 #. Start your bot.
 #. If you have any 3rd-party cogs installed, we highly recommend you update them with this command in Discord: ``[p]cog update`` (``[p]`` is considered as your prefix)
 
@@ -98,11 +92,8 @@ If you have a Red version between 3.2.0 and 3.4.19, you can upgrade by following
     .. prompt:: batch
         :prompts: (redenv) C:\\>
 
-        python -m pip install -U Red-DiscordBot
+        python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
 
-    .. attention::
-
-        If you're using PostgreSQL data backend, replace ``Red-DiscordBot`` in the second command with ``Red-DiscordBot[postgres]``
 #. If you're using **any** 3rd-party cogs:
 
     #. Start your bot with ``--no-cogs --load-cogs downloader`` flags, for example:
@@ -138,11 +129,8 @@ If you have a Red version between 3.2.0 and 3.4.19, you can upgrade by following
     .. prompt:: bash
         :prompts: (redenv) $
 
-        python -m pip install -U Red-DiscordBot
+        python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
 
-    .. attention::
-
-        If you're using PostgreSQL data backend, replace ``Red-DiscordBot`` in the second command with ``Red-DiscordBot[postgres]``
 #. **If you're using any 3rd-party cogs:**
 
     #. Start your bot with ``--no-cogs --load-cogs downloader`` flags, for example:

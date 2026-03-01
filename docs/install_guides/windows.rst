@@ -127,23 +127,13 @@ Installing Red
 .. attention:: You may need to restart your computer after installing dependencies
                for the PATH changes to take effect.
 
-Run **one** of the following set of commands, depending on what extras you want installed
+Run the following set of commands to install Red:
 
-  * Normal installation:
+.. prompt:: batch
+    :prompts: (redenv) C:\\>
 
-    .. prompt:: batch
-        :prompts: (redenv) C:\\>
-
-        python -m pip install -U pip wheel
-        python -m pip install -U Red-DiscordBot
-
-  * With PostgreSQL support:
-
-    .. prompt:: batch
-        :prompts: (redenv) C:\\>
-
-        python -m pip install -U pip wheel
-        python -m pip install -U Red-DiscordBot[postgres]
+    python -m pip install -U pip wheel
+    python -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz
 
 --------------------------
 Setting Up and Running Red
