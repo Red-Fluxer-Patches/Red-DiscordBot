@@ -27,13 +27,13 @@ classifiers = [
 dynamic = ["version", "requires-python", "dependencies", "optional-dependencies"]
 
 [project.urls]
-"Homepage" = "https://github.com/Cog-Creators/Red-DiscordBot"
+"Homepage" = "https://github.com/Red-Fluxer-Patches/Red-DiscordBot"
 "Fluxer Community" = "https://invite.fluxer.red"
-"Documentation" = "https://docs.discord.red"
+"Documentation" = "https://docs.fluxer.red"
 "Donate on Patreon" = "https://www.patreon.com/Red_Devs"
-"Issue Tracker" = "https://github.com/Cog-Creators/Red-DiscordBot/issues"
-"Source Code" = "https://github.com/Cog-Creators/Red-DiscordBot"
-"Changelog" = "https://docs.discord.red/en/stable/changelog.html"
+"Issue Tracker" = "https://github.com/Red-Fluxer-Patches/Red-DiscordBot/issues"
+"Source Code" = "https://github.com/Red-Fluxer-Patches/Red-DiscordBot"
+"Changelog" = "https://docs.fluxer.red/en/stable/changelog.html"
 
 [project.scripts]
 redbot = "redbot.__main__:main"

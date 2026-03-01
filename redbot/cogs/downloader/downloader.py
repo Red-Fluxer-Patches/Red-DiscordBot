@@ -1804,7 +1804,7 @@ class Downloader(commands.Cog):
                 cog_pkg_name = cog_installable.name
             elif cog.__module__.startswith("redbot."):  # core commands or core cog
                 made_by = "Cog Creators"
-                repo_url = "https://github.com/Cog-Creators/Red-DiscordBot"
+                repo_url = "https://github.com/Red-Fluxer-Patches/Red-DiscordBot"
                 module_fragments = cog.__module__.split(".")
                 if module_fragments[1] == "core":
                     cog_pkg_name = "N/A - Built-in commands"

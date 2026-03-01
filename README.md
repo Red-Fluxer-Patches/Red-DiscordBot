@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/Cog-Creators/Red-DiscordBot/tree/V3/develop"><img src="https://imgur.com/pY1WUFX.png" alt="Red - Discord Bot"></a>
+  <a href="https://github.com/Red-Fluxer-Patches/Red-DiscordBot"><img src="https://imgur.com/pY1WUFX.png" alt="Red - Discord Bot"></a>
   <br>
   Red Discord Bot
   <br>
@@ -23,8 +23,8 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/Cog-Creators/Red-DiscordBot/actions">
-    <img src="https://img.shields.io/github/actions/workflow/status/Cog-Creators/Red-Discordbot/tests.yml?label=tests" alt="GitHub Actions">
+  <a href="https://github.com/Red-Fluxer-Patches/Red-DiscordBot/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/Red-Fluxer-Patches/Red-Discordbot/tests.yml?label=tests" alt="GitHub Actions">
   </a>
   <a href="http://docs.discord.red/en/stable/?badge=stable">
     <img src="https://readthedocs.org/projects/red-discordbot/badge/?version=stable" alt="Red on readthedocs.org">

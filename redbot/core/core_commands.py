@@ -408,7 +408,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         """Shows info about [botname]."""
         embed_links = await ctx.embed_requested()
         author_repo = "https://github.com/Twentysix26"
-        red_repo = "https://github.com/Cog-Creators/Red-DiscordBot"
+        red_repo = "https://github.com/Red-Fluxer-Patches/Red-DiscordBot"
         contributors_url = red_repo + "/graphs/contributors"
         red_pypi = "https://pypi.org/project/Red-DiscordBot"
         support_server_url = "https://invite.fluxer.red"
