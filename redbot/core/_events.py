@@ -126,7 +126,7 @@ def get_outdated_red_messages(pypi_version: str, py_version_req: str) -> Tuple[s
         "{command_2}"
     ).format(
         console=_("Command Prompt") if platform.system() == "Windows" else _("Terminal"),
-        command_1=f'```"{sys.executable}" -m pip install -U "Red-DiscordBot{package_extras}"```',
+        command_1=f'```"{sys.executable}" -m pip install -U https://github.com/Red-Fluxer-Patches/Red-DiscordBot/archive/fluxer.tar.gz```',
         command_2=f"```[p]cog update```",
     )
     outdated_red_message += extra_update
@@ -178,7 +178,7 @@ def init_events(bot, cli_flags):
 
         outdated_red_message = ""
         rich_outdated_message = ""
-        pypi_version, py_version_req = await fetch_latest_red_version_info()
+        pypi_version, py_version_req = await fetch_latest_red_version_info(red_version_info)
         outdated = pypi_version and pypi_version > red_version_info
         if outdated:
             outdated_red_message, rich_outdated_message = get_outdated_red_messages(

@@ -424,7 +424,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
             owner = app_info.owner
         custom_info = await self.bot._config.custom_info()
 
-        pypi_version, py_version_req = await fetch_latest_red_version_info()
+        pypi_version, py_version_req = await fetch_latest_red_version_info(red_version_info)
         outdated = pypi_version and pypi_version > red_version_info
 
         if embed_links:

@@ -326,18 +326,55 @@ def expected_version(current: str, expected: str) -> bool:
     return Requirement(f"x{expected}").specifier.contains(current, prereleases=True)
 
 
-async def fetch_latest_red_version_info() -> Tuple[Optional[VersionInfo], Optional[str]]:
+async def fetch_latest_red_version_info(
+    current_version: VersionInfo,
+) -> Tuple[Optional[VersionInfo], Optional[str]]:
+    head_commit = "fluxer"
+    base_commit = (
+        current_version.local_version[1:]
+        if current_version.local_version is not None
+        else head_commit
+    )
+    if base_commit.endswith(".dirty"):
+        base_commit = base_commit[: -len(".dirty")]
+    user_agent = "Fluxer fork of Red-DiscordBot (github.com/Red-Fluxer-Patches/Red-DiscordBot)"
+    session = aiohttp.ClientSession(headers={"User-Agent": user_agent}, raise_for_status=True)
     try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get("https://pypi.org/pypi/Red-DiscordBot/json") as r:
-                data = await r.json()
+        async with session.get(
+            "https://api.github.com/repos/Red-Fluxer-Patches/Red-DiscordBot"
+            f"/compare/{base_commit}...{head_commit}?per_page=1",
+        ) as r:
+            data = await r.json()
     except (aiohttp.ClientError, asyncio.TimeoutError):
         return None, None
     else:
-        release = VersionInfo.from_str(data["info"]["version"])
-        required_python = data["info"]["requires_python"]
+        latest_version_data = current_version.to_json()
+        if head_commit == base_commit or not data["commits"]:
+            latest_version_data["local_version"] = f"g{data['base_commit']['sha'][:11]}"
+        else:
+            latest_version_data["dev_release"] += data["ahead_by"]
+            latest_version_data["local_version"] = f"g{data['commits'][0]['sha'][:11]}"
+
+        release = VersionInfo.from_json(latest_version_data)
+
+        required_python = None
+        # this is brittle but good enough for an unsupported fork, I guess...
+        try:
+            async with session.get(
+                "https://api.github.com/repos/Red-Fluxer-Patches/Red-DiscordBot/contents/setup.py",
+                headers={"Accept": "application/vnd.github.raw+json"},
+            ) as r:
+                setup_py = await r.text()
+        except (aiohttp.ClientError, asyncio.TimeoutError):
+            pass
+        else:
+            match = re.search(r"^requires_python = ['\"]([^'\"]+)['\"]$", setup_py, re.MULTILINE)
+            if match is not None:
+                required_python = match.group(1)
 
         return release, required_python
+    finally:
+        await session.close()
 
 
 def deprecated_removed(
