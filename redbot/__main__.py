@@ -119,7 +119,7 @@ async def _edit_token(red, token, no_prompt):
             return
         await red._config.token.set(token)
     elif not no_prompt and confirm("Would you like to change instance's token?", default=False):
-        await interactive_config(red, False, True, print_header=False)
+        await interactive_config(red, False, True, False, print_header=False)
         print("Token updated.\n")
 
 
@@ -152,7 +152,7 @@ async def _edit_owner(red, owner, no_prompt):
     if owner:
         if not (15 <= len(str(owner)) <= 20):
             print(
-                "The provided owner id doesn't look like a valid Discord user id."
+                "The provided owner id doesn't look like a valid Fluxer user id."
                 " Instance's owner will remain unchanged."
             )
             return
@@ -165,7 +165,7 @@ async def _edit_owner(red, owner, no_prompt):
             " The owner can access any data that is present on the host system.\n"
         )
         if confirm("Are you sure you want to change instance's owner?", default=False):
-            print("Please enter a Discord user id for new owner:")
+            print("Please enter a Fluxer user id for new owner:")
             while True:
                 owner_id = input("> ").strip()
                 if not (15 <= len(owner_id) <= 20 and owner_id.isdecimal()):
@@ -349,12 +349,14 @@ async def run_bot(red: Red, cli_flags: Namespace) -> None:
         if not token:
             token = await red._config.token()
 
+    owner_set = cli_flags.owner or cli_flags.co_owner or await red._config.owner() is not None
+
     prefix = cli_flags.prefix or await red._config.prefix()
 
-    if not (token and prefix):
+    if not (token and prefix and owner_set):
         if cli_flags.no_prompt is False:
             new_token = await interactive_config(
-                red, token_set=bool(token), prefix_set=bool(prefix)
+                red, token_set=bool(token), prefix_set=bool(prefix), owner_set=owner_set
             )
             if new_token:
                 token = new_token

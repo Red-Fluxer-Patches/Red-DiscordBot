@@ -55,7 +55,7 @@ def confirm(text: str, default: Optional[bool] = None) -> bool:
         print("Error: invalid input")
 
 
-async def interactive_config(red, token_set, prefix_set, *, print_header=True):
+async def interactive_config(red, token_set, prefix_set, owner_set, *, print_header=True):
     token = None
 
     if print_header:
@@ -102,6 +102,25 @@ async def interactive_config(red, token_set, prefix_set, *, print_header=True):
                 prefix = ""
             if prefix:
                 await red._config.prefix.set([prefix])
+
+    if not owner_set:
+        print(
+            "\nYou will now have to pick a Fluxer user that will be the bot's owner.\n"
+            "Remember:\n"
+            "ONLY the person who is hosting Red should be owner."
+            " This has SERIOUS security implications."
+            " The owner can access any data that is present on the host system.\n"
+        )
+        print("Please enter a Fluxer user id for new owner:")
+        while True:
+            owner_id = input("> ").strip()
+            if not (15 <= len(owner_id) <= 20 and owner_id.isdecimal()):
+                print("That doesn't look like a valid Fluxer user id.")
+                continue
+            owner_id = int(owner_id)
+            await red._config.owner.set(owner_id)
+            print("Owner updated.")
+            break
 
     return token
 
