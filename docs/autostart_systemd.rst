@@ -30,7 +30,7 @@ Next, your python :code:`path` can be fetched with the following commands:
 
 Then create the new service file:
 
-:code:`sudo nano /etc/systemd/system/red@.service`
+:code:`sudo nano /etc/systemd/system/redfluxer@.service`
 
 Paste the following in the file, and replace all instances of :code:`username` with the Linux username you retrieved above, and :code:`path` with the python path you retrieved above.
 
@@ -69,20 +69,20 @@ To start the bot, run the service and add the instance name after the **@**:
 
 .. prompt:: bash
 
-    sudo systemctl start red@instancename
+    sudo systemctl start redfluxer@instancename
 
 To set the bot to start on boot, you must enable the service, again adding the instance name after the **@**:
 
 .. prompt:: bash
 
-    sudo systemctl enable red@instancename
+    sudo systemctl enable redfluxer@instancename
 
 If you need to shutdown the bot, you can use the ``[p]shutdown`` command or
 type the following command in the terminal, still by adding the instance name after the **@**:
 
 .. prompt:: bash
 
-    sudo systemctl stop red@instancename
+    sudo systemctl stop redfluxer@instancename
 
 .. warning:: If the service doesn't stop in the next 10 seconds, the process is killed.
     Check your logs to know the cause of the error that prevents the shutdown.
@@ -91,10 +91,10 @@ To set the bot to not start on boot anymore, you must disable the service by run
 
 .. prompt:: bash
 
-    sudo systemctl disable red@instancename
+    sudo systemctl disable redfluxer@instancename
 
 You can access Red's log through journalctl:
 
 .. prompt:: bash
 
-    sudo journalctl -eu red@instancename
+    sudo journalctl -eu redfluxer@instancename

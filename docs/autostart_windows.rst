@@ -32,17 +32,17 @@ Open that document in Notepad, and paste the following text in it:
 Replace ``<your instance name>`` with the instance name of your bot.
 If you created your VENV at a location other than the recommended one, replace ``%userprofile%\redfluxerenv\Scripts\activate.bat`` with the path to your VENV.
 
-Click "File", "Save as". Change the dropdown "Save as type" to "All Files (*.*)". Set the filename to ``start_redbot.bat``, and click save.
+Click "File", "Save as". Change the dropdown "Save as type" to "All Files (*.*)". Set the filename to ``start_redfluxerbot.bat``, and click save.
 
 There should now be a new file in the location you created the text document in. You can delete that text document as it is no longer needed.
-You can now use the ``start_redbot.bat`` batch file to launch Red by double clicking it.
+You can now use the ``start_redfluxerbot.bat`` batch file to launch Red by double clicking it.
 This script will automatically restart red when the ``[p]restart`` command is used or when the bot shuts down abnormally.
 
 -------------------------
 Launch the bot on startup
 -------------------------
 
-Create a shortcut of your ``start_redbot.bat`` file.
+Create a shortcut of your ``start_redfluxerbot.bat`` file.
 
 Open the "Run" dialogue box using Windows Key + R.
 

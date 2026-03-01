@@ -16,7 +16,7 @@ Start by activating your venv. Then run the following command:
 
 Copy the output of that command.
 
-Now run :code:`sudo nano /Library/LaunchDaemons/red.plist`
+Now run :code:`sudo nano /Library/LaunchDaemons/redfluxer.plist`
 
 Paste the following and replace the following: 
 
@@ -82,26 +82,26 @@ To start the bot and set it to start on boot, you must run the following command
 
 .. prompt:: bash
 
-    sudo launchctl load -w /Library/LaunchDaemons/red.plist
+    sudo launchctl load -w /Library/LaunchDaemons/redfluxer.plist
 
 If you need to shutdown the bot, you can use the ``[p]shutdown`` command or
 type the following command in the terminal:
 
 .. prompt:: bash
 
-    sudo launchctl stop red
+    sudo launchctl stop redfluxer
 
 To start the bot again after a shutdown, run the following:
 
 .. prompt:: bash
 
-    sudo launchctl start red
+    sudo launchctl start redfluxer
 
 To stop the bot and set it to not start on boot anymore, run the following:
 
 .. prompt:: bash
 
-    sudo launchctl unload -w /Library/LaunchDaemons/red.plist
+    sudo launchctl unload -w /Library/LaunchDaemons/redfluxer.plist
 
 To view Red's log, run the following (:code:`red_out.log` is for the console output, and
 :code:`red_err.log` for the error logs):
