@@ -422,7 +422,7 @@ Inside this newly created file, paste the following text:
 
 .. code-block:: sh
 
-	curl -LOz Lavalink.jar https://github.com/Cog-Creators/Lavalink-Jars/releases/latest/download/Lavalink.jar
+	curl -LOz Lavalink.jar https://github.com/Red-Fluxer-Patches/Lavalink-Jars/releases/latest/download/Lavalink.jar
 
 Run the following, replacing ``<Lavalink path>`` with the Lavalink path you generated earlier (``<datapath>/cogs/Audio``).
 
@@ -485,12 +485,12 @@ Obtaining the latest Lavalink.jar on a Red update
 
 **To manually download the jar**
 
-Stop your bot. Download the Lavalink.jar file from `here <https://github.com/Cog-Creators/Lavalink-Jars/releases/latest>`__,
+Stop your bot. Download the Lavalink.jar file from `here <https://github.com/Red-Fluxer-Patches/Lavalink-Jars/releases/latest>`__,
 which could alternatively be downloaded by running the following command:
 
 .. code-block:: sh
     
-    curl -LOz Lavalink.jar https://github.com/Cog-Creators/Lavalink-Jars/releases/latest/download/Lavalink.jar
+    curl -LOz Lavalink.jar https://github.com/Red-Fluxer-Patches/Lavalink-Jars/releases/latest/download/Lavalink.jar
 
 Next, stop all instances of Red running on the host, and stop the Lavalink process. Move the new Lavalink.jar
 to where your old Lavalink.jar is located, overwriting the old file.
@@ -584,7 +584,7 @@ the ``cd lavalink`` command in the previous section, you can run the following c
 .. code-block:: sh
 
     curl https://raw.githubusercontent.com/lavalink-devs/Lavalink/master/LavalinkServer/application.yml.example > application.yml
-    curl -LOz Lavalink.jar https://github.com/Cog-Creators/Lavalink-Jars/releases/latest/download/Lavalink.jar
+    curl -LOz Lavalink.jar https://github.com/Red-Fluxer-Patches/Lavalink-Jars/releases/latest/download/Lavalink.jar
 
 If you did it properly, the files ``Lavalink.jar`` and ``application.yml`` will show up when we run ``ls``, the Linux command
 to list the contents of the current directory.
@@ -693,7 +693,7 @@ You'll see that running nano has opened a file. Paste the following code into th
 .. code-block:: sh
 
     #!/bin/sh
-    curl -LOz Lavalink.jar https://github.com/Cog-Creators/Lavalink-Jars/releases/latest/download/Lavalink.jar
+    curl -LOz Lavalink.jar https://github.com/Red-Fluxer-Patches/Lavalink-Jars/releases/latest/download/Lavalink.jar
 
 Now save the file and exit (``CTRL+X``, then ``y``).
 
