@@ -126,7 +126,7 @@ async def _edit_origin_url(red, origin_url, no_prompt):
     elif not no_prompt and confirm(
         "Would you like to change instance's Fluxer origin?", default=False
     ):
-        await interactive_config(red, True, False, False, print_header=False)
+        await interactive_config(red, False, True, True, print_header=False)
         print("Fluxer origin updated.\n")
 
 
@@ -140,7 +140,7 @@ async def _edit_token(red, token, no_prompt):
             return
         await red._config.token.set(token)
     elif not no_prompt and confirm("Would you like to change instance's token?", default=False):
-        await interactive_config(red, False, False, True, print_header=False)
+        await interactive_config(red, True, False, True, print_header=False)
         print("Token updated.\n")
 
 
