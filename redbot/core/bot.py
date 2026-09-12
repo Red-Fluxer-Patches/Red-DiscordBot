@@ -109,6 +109,7 @@ class Red(
         self.rpc_port = cli_flags.rpc_port
         self._last_exception = None
         self._config.register_global(
+            instance_origin_url=None,
             token=None,
             prefix=[],
             packages=[],
@@ -238,6 +239,7 @@ class Red(
         self._main_dir = bot_dir
         self._cog_mgr = CogManager()
         self._use_team_features = cli_flags.use_team_features
+        self.instance_origin_url = cli_flags.origin_url
         super().__init__(*args, help_command=None, tree_cls=RedTree, **kwargs)
         # Do not manually use the help formatter attribute here, see `send_help_for`,
         # for a documented API. The internals of this object are still subject to change.
@@ -1133,6 +1135,10 @@ class Red(
         await super()._pre_login()
 
         await self._maybe_update_config()
+        if self.instance_origin_url is None:
+            self.instance_origin_url = await self._config.instance_origin_url()
+        if not self.instance_origin_url:
+            self.instance_origin_url = "https://canary.fluxer.app"
         self.description = await self._config.description()
         self._color = discord.Colour(await self._config.color())
 
@@ -1304,7 +1310,7 @@ class Red(
     async def start(self, token: str) -> None:
         # Overriding start to call _pre_login() before login()
         await self._pre_login()
-        await self.login(token)
+        await self.login(token, origin_url=self.instance_origin_url)
         # Pre-connect actions are done by setup_hook() which is called at the end of d.py's login()
         await self.connect()
 

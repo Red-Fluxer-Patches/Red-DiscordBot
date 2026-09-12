@@ -6,6 +6,7 @@ from enum import IntEnum
 from typing import Optional
 
 import discord
+import yarl
 from discord import __version__ as discord_version
 
 from redbot.core.utils._internal_utils import cli_level_to_log_level
@@ -55,11 +56,42 @@ def confirm(text: str, default: Optional[bool] = None) -> bool:
         print("Error: invalid input")
 
 
-async def interactive_config(red, token_set, prefix_set, *, print_header=True):
+async def interactive_config(red, origin_url_set, token_set, prefix_set, *, print_header=True):
     token = None
 
     if print_header:
         print("Red - Discord Bot | Configuration process\n")
+
+    if not origin_url_set:
+        print(
+            "Please enter full Fluxer instance origin URL (including https:// prefix).\n"
+            "If you want to use the Fluxer instance hosted by Fluxer Platform AB"
+            " (https://fluxer.app), simply hit Enter without inputting anything."
+        )
+        origin_url = None
+        while origin_url is None:
+            origin_url = input("> ")
+            if origin_url:
+                try:
+                    yarl.URL(origin_url)
+                except ValueError:
+                    print(
+                        "That doesn't look like a valid URL."
+                        " Make sure to include the protocol prefix (https://)."
+                    )
+                    origin_url = None
+                if not confirm(
+                    f'You want to use the Fluxer instance with origin "{origin_url}",'
+                    " is that correct?"
+                ):
+                    origin_url = None
+            elif not confirm(
+                "You want to use the Fluxer instance hosted by Fluxer Platform AB,"
+                " is that correct?"
+            ):
+                origin_url = None
+            if origin_url is not None:
+                await red._config.instance_origin_url.set(origin_url)
 
     if not token_set:
         print(
@@ -145,7 +177,8 @@ def parse_cli_flags(args):
         action="store_true",
         help="Edit the instance. This can be done without console interaction "
         "by passing --no-prompt and arguments that you want to change (available arguments: "
-        "--edit-instance-name, --edit-data-path, --copy-data, --owner, --token, --prefix).",
+        "--edit-instance-name, --edit-data-path, --copy-data, --owner, --origin-url, --token,"
+        " --prefix).",
     )
     parser.add_argument(
         "--edit-instance-name",
@@ -260,6 +293,12 @@ def parse_cli_flags(args):
         type=int,
         default=6133,
         help="The port of the built-in RPC server to use. Default to 6133.",
+    )
+    parser.add_argument(
+        "--origin-url",
+        type=str,
+        help="Run Red with the given Fluxer origin."
+        " Pass an empty string to use the Fluxer instance hosted by Fluxer Platform AB.",
     )
     parser.add_argument("--token", type=str, help="Run Red with the given token.")
     parser.add_argument(

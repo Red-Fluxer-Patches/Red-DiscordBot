@@ -21,6 +21,7 @@ from typing import Any, Awaitable, Callable, NoReturn, Optional, Union
 
 import discord
 import rich
+import yarl
 
 import redbot.logging
 from redbot import __version__
@@ -69,6 +70,7 @@ async def debug_info(red: Optional[Red] = None, *args: Any) -> None:
 
 async def edit_instance(red, cli_flags):
     no_prompt = cli_flags.no_prompt
+    origin_url = cli_flags.origin_url
     token = cli_flags.token
     owner = cli_flags.owner
     prefix = cli_flags.prefix
@@ -86,7 +88,7 @@ async def edit_instance(red, cli_flags):
         sys.exit(ExitCodes.INVALID_CLI_USAGE)
     if (
         no_prompt
-        and all(to_change is None for to_change in (token, owner, new_name, data_path))
+        and all(to_change is None for to_change in (origin_url, token, owner, new_name, data_path))
         and not prefix
     ):
         print(
@@ -96,6 +98,7 @@ async def edit_instance(red, cli_flags):
         )
         sys.exit(ExitCodes.INVALID_CLI_USAGE)
 
+    await _edit_origin_url(red, origin_url, no_prompt)
     await _edit_token(red, token, no_prompt)
     await _edit_prefix(red, prefix, no_prompt)
     await _edit_owner(red, owner, no_prompt)
@@ -109,6 +112,22 @@ async def edit_instance(red, cli_flags):
         save_config(old_name, {}, remove=True)
 
 
+async def _edit_origin_url(red, origin_url, no_prompt):
+    if origin_url is not None:
+        try:
+            yarl.URL(origin_url)
+        except ValueError:
+            print(
+                "The provided Fluxer origin doesn't look like a valid URL."
+                " Fluxer origin will remain unchanged.\n"
+            )
+            return
+        await red._config.instance_origin_url.set(origin_url)
+    elif not no_prompt and confirm("Would you like to change instance's Fluxer origin?", default=False):
+        await interactive_config(red, True, False, False, print_header=False)
+        print("Fluxer origin updated.\n")
+
+
 async def _edit_token(red, token, no_prompt):
     if token:
         if not len(token) >= 50:
@@ -119,7 +138,7 @@ async def _edit_token(red, token, no_prompt):
             return
         await red._config.token.set(token)
     elif not no_prompt and confirm("Would you like to change instance's token?", default=False):
-        await interactive_config(red, False, True, print_header=False)
+        await interactive_config(red, False, False, True, print_header=False)
         print("Token updated.\n")
 
 
@@ -349,18 +368,28 @@ async def run_bot(red: Red, cli_flags: Namespace) -> None:
         if not token:
             token = await red._config.token()
 
+    origin_url = cli_flags.origin_url or await red._config.instance_origin_url()
     prefix = cli_flags.prefix or await red._config.prefix()
 
-    if not (token and prefix):
+    if not (origin_url is not None and token and prefix):
         if cli_flags.no_prompt is False:
             new_token = await interactive_config(
-                red, token_set=bool(token), prefix_set=bool(prefix)
+                red,
+                origin_url_set=origin_url is not None,
+                token_set=bool(token),
+                prefix_set=bool(prefix),
             )
             if new_token:
                 token = new_token
-        else:
+        elif not token or not prefix:
             log.critical("Token and prefix must be set in order to login.")
             sys.exit(ExitCodes.CONFIGURATION_ERROR)
+        else:
+            log.info(
+                "--no-prompt specified, configuring the Red instance to use Fluxer instance"
+                " hosted by Fluxer Platform AB (https://fluxer.app)."
+            )
+            await red._config.instance_origin_url.set("")
 
     if cli_flags.dry_run:
         sys.exit(ExitCodes.SHUTDOWN)
