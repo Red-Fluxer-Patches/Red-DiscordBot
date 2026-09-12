@@ -1,15 +1,20 @@
+from __future__ import annotations
+
 import argparse
 import asyncio
 import logging
 import sys
 from enum import IntEnum
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 import discord
 import yarl
 from discord import __version__ as discord_version
 
 from redbot.core.utils._internal_utils import cli_level_to_log_level
+
+if TYPE_CHECKING:
+    from redbot.core.bot import Red
 
 
 # This needs to be an int enum to be used
@@ -56,7 +61,14 @@ def confirm(text: str, default: Optional[bool] = None) -> bool:
         print("Error: invalid input")
 
 
-async def interactive_config(red, origin_url_set, token_set, prefix_set, *, print_header=True):
+async def interactive_config(
+    red: Red,
+    *,
+    origin_url_set: bool = True,
+    token_set: bool = True,
+    prefix_set: bool = True,
+    print_header: bool = True,
+):
     token = None
 
     if print_header:
