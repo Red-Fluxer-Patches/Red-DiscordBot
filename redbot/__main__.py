@@ -123,7 +123,9 @@ async def _edit_origin_url(red, origin_url, no_prompt):
             )
             return
         await red._config.instance_origin_url.set(origin_url)
-    elif not no_prompt and confirm("Would you like to change instance's Fluxer origin?", default=False):
+    elif not no_prompt and confirm(
+        "Would you like to change instance's Fluxer origin?", default=False
+    ):
         await interactive_config(red, True, False, False, print_header=False)
         print("Fluxer origin updated.\n")
 
