@@ -52,7 +52,7 @@ class DebugInfo:
 
     @property
     def is_logged_in(self) -> bool:
-        return self.bot is not None and self.bot.application_id is not None
+        return self.bot is not None and self.bot.user is not None
 
     @property
     def is_connected(self) -> bool:

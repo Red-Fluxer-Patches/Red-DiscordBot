@@ -231,6 +231,7 @@ class Red(
         if cli_flags.no_message_cache:
             message_cache_size = None
         kwargs["max_messages"] = message_cache_size
+        kwargs["self_bot"] = cli_flags.self_bot
         self._max_messages = message_cache_size
 
         self._uptime = None
@@ -1294,7 +1295,7 @@ class Red(
             await self.rpc.initialize(self.rpc_port)
 
     def _setup_owners(self) -> None:
-        if self.application.team:
+        if self.application and self.application.team:
             if self._use_team_features:
                 self.owner_ids.update(
                     m.id
@@ -1302,7 +1303,7 @@ class Red(
                     if m.role in (discord.TeamMemberRole.admin, discord.TeamMemberRole.developer)
                 )
         elif self._owner_id_overwrite is None:
-            self.owner_ids.add(self.application.owner.id)
+            self.owner_ids.add(self.application.owner.id if self.user.bot else self.user.id)
 
         if not self.owner_ids:
             raise _NoOwnerSet("Bot doesn't have any owner set!")
@@ -1310,7 +1311,8 @@ class Red(
     async def start(self, token: str) -> None:
         # Overriding start to call _pre_login() before login()
         await self._pre_login()
-        await self.login(token, origin_url=self.instance_origin_url)
+        user_bot = self._cli_flags.user_bot or self._cli_flags.self_bot
+        await self.login(token, origin_url=self.instance_origin_url, bot=not user_bot)
         # Pre-connect actions are done by setup_hook() which is called at the end of d.py's login()
         await self.connect()
 
@@ -1472,6 +1474,8 @@ class Red(
         str
             Invite URL.
         """
+        if not self.user.bot:
+            return ""
         data = await self._config.all()
         commands_scope = data["invite_commands_scope"]
         scopes = ("bot", "applications.commands") if commands_scope else ("bot",)

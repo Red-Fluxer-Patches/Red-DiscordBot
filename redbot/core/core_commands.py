@@ -417,11 +417,16 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         since = datetime.datetime(2016, 1, 2, 0, 0)
         days_since = (datetime.datetime.utcnow() - since).days
 
-        app_info = await self.bot.application_info()
-        if app_info.team:
-            owner = app_info.team.name
+        if self.bot.user.bot:
+            app_info = await self.bot.application_info()
+            if app_info.team:
+                owner = app_info.team.name
+            else:
+                owner = app_info.owner
+            is_team = app_info.team
         else:
-            owner = app_info.owner
+            is_team = False
+            owner = self.bot.user
         custom_info = await self.bot._config.custom_info()
 
         pypi_version, py_version_req = await fetch_latest_red_version_info(red_version_info)
@@ -443,7 +448,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
 
             embed = discord.Embed(color=(await ctx.embed_colour()))
             embed.add_field(
-                name=_("Instance owned by team") if app_info.team else _("Instance owned by"),
+                name=_("Instance owned by team") if is_team else _("Instance owned by"),
                 value=str(owner),
             )
             embed.add_field(name="Python", value=python_version)
@@ -1477,6 +1482,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         else:
             await ctx.send(_("No exception has occurred yet."))
 
+    @commands.check(lambda ctx: ctx.bot.user.bot)
     @commands.command()
     @commands.check(CoreLogic._can_get_invite_url)
     async def invite(self, ctx):
@@ -1506,6 +1512,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
                 "Either you blocked me or you disabled DMs in this server."
             )
 
+    @commands.check(lambda ctx: ctx.bot.user.bot)
     @commands.group()
     @commands.is_owner()
     async def inviteset(self, ctx):
